@@ -522,6 +522,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         pointer: !_vm.readOnly
       }, 'rating-item']
     }, [_c(_vm.type, {
+      key: n,
       tag: "component",
       attrs: {
         "fill": _vm.fillLevel[n - 1],

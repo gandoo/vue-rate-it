@@ -522,6 +522,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         pointer: !_vm.readOnly
       }, 'rating-item']
     }, [_c(_vm.type, {
+      key: n,
       tag: "component",
       attrs: {
         "fill": _vm.fillLevel[n - 1],
@@ -992,8 +993,14 @@ exports.default = _Path2.default.extend({
         }
     },
     created: function created() {
-        var glyph = this.customProps.glyph;
-        this.points = [_glyphs2.default[glyph]];
+        this.updateGlyph();
+    },
+
+    methods: {
+        updateGlyph: function updateGlyph() {
+            var glyph = this.customProps.glyph.replace(/^fa\-/, "");
+            this.points = [_glyphs2.default[glyph]];
+        }
     },
     data: function data() {
         return {
@@ -1033,15 +1040,14 @@ exports.default = _BaseRating2.default.extend({
     components: {
         FaGlyph: _fontAwesomeGlyph2.default
     },
-    created: function created() {
-        this.customProps['glyph'] = this.glyph;
-    },
-
     props: {
         glyph: {
             type: String,
             required: true
         }
+    },
+    created: function created() {
+        this.customProps['glyph'] = this.glyph;
     },
     data: function data() {
         return {
